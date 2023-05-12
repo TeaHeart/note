@@ -1,0 +1,614 @@
+# english
+
+---
+
+## 词性
+
+- 名词
+- 代词
+- 动词
+  - 功能分类
+    - 谓语动词
+      - tell award buy give leave lend offer pay show teach
+    - 非谓语动词
+      - 动词不定式
+      - 现在分词
+      - 过去分词
+      - 动名词
+  - 意义分类
+    - 实义动词
+      - 及物动词
+      - 不及物动词
+    - 连系动词
+      - 分类
+        - be 动词
+          - am / is / are / was / were / have been / been / being
+        - 感官动词
+          - look smell taste sound feel
+        - 表变化
+          - get become
+        - 表状态
+          - keep stay remain
+      - 注意
+        - 系动词无被动
+    - 情态动词
+      - should may could can must
+    - 助动词
+      - 充当成分 无实意
+- 形容词
+  - 修饰名词或代词
+- 副词
+  - 修饰动词或形容词
+- 介词
+  - 介词 + 名词
+  - 用法
+    - 介词 + 名词 = 介词短语
+    - 动词 + 介词 = 动词短语
+- 冠词
+  - 冠词 + 名词
+  - 可用
+    - a an the / (零冠词)
+- 数词
+  - 基数词
+  - 序数词
+- 连词
+  - 连接句子
+- ~~感叹词~~
+
+---
+
+## 基本句型
+
+- 主语
+  - 动作发出者
+  - 可用
+    - 名词 代词 从句 不定式 非谓语动词
+- 谓语
+  - 发出的动作
+  - 可用
+    - 有完整时态语态的动词, 唯一
+- 宾语
+  - 动作承受者
+  - 可用
+    - 名词 代词 从句 不定式 非谓语动词
+- 表语
+  - 基本等同于宾语(系动词之后)
+  - 可用
+    - 名词 代词 从句 不定式 副词 形容词 介词短语 非谓语动词
+- 定语(的)
+  - 修饰名词或代词
+  - 可用
+    - 名词 从句 不定式 形容词 介词短语 非谓语动词
+  - 用法
+    - 形容词 限定词 放前面
+    - 从句 介词短语 分词短语 不定式短语 放后面
+  - 例句
+    - Dsm **who likes LOL** is a teacher 从句
+    - **Handsome** Dsm is a teacher 形容词
+    - Dsm is a teacher **on Internet** 介词短语
+    - Dsm is a teacher **to have two children** 不定式
+    - Dsm **who play LOL with Gsd** is a teacher
+- 状语(地)
+  - 修饰动词或句子
+  - 可用
+    - 名词 不定式 副词 介词短语 状语从句 非谓语动词
+  - 用法
+    - 句首或句末
+  - 例句
+    - **When Dsm plays games**, he is a teacher 状语从句
+    - Dsm **indeed** is a teacher 副词
+    - **In our heart**, Dsm is a teacher 介词短语
+- ~~补语~~
+  - ???
+  - 可用
+    - 名词 副词 形容词 介词短语 过去分词
+
+---
+
+- 主谓
+  - 例句
+    - I come
+    - He arrives
+- 主谓宾
+  - 例句
+    - He takes part in this activity
+    - My companies are talking with me
+    - He took part in this activity
+- 主系表
+  - 例句
+    - We are family
+    - She becomes beautiful
+    - The meteor is transient
+- 主谓双宾
+  - 例句
+    - He awards me a book
+    - He tells me that he wants a cake
+- 主谓宾宾补
+  - 例句
+    - The present makes me happy
+
+---
+
+- 主谓 主谓宾
+  - 动词
+    - 不及物 主谓
+    - 不及物 + 介词 主谓宾
+    - 及物 主谓宾
+  - 被动
+    - 无 主谓
+    - 有 主谓宾
+- 主谓宾 主系表
+  - 动词
+    - 实义动词 主谓宾
+    - 系动词 主系表
+- 延续性动词 非延续动词
+  - 持续时间
+    - 长 延续性动词
+    - 短 非延续动词
+- 否定句
+  - 用法
+    - be 动词 助动词 情态动词
+      - 后面 + not
+      - 例句
+        - You are **not** charming be 动词
+        - You have **not** been here many years 助动词
+        - You should **not** go out 情态动词
+    - 实意动词
+      - 前面 + don't / doesn't / didn't
+      - 例句
+        - You don't have three book 实义动词
+- 名词短语
+  - 限定词 + 形容词 + 名词 + 分词短语 / 不定词短语 / 定语从句 / 同位语从句 / 形容词短语
+
+---
+
+## 时态语态
+
+|          |           现在           |         过去          |                    将来                    |              过去将来              |
+| :------: | :----------------------: | :-------------------: | :----------------------------------------: |:------------------------------:|
+|   一般   |        do , does         |          did          |      will / shall do , be going to do      |       would / should do        |
+|   被动   |    am / is / are done    |    was / were done    | will / shall be done , be going to be done |     would / should be done     |
+|   进行   |   am / is / are doing    |   was / were doing    |           will / shall be doing            |    would / should be doing     |
+|   被动   | am / is / are being done | was / were being done |                                            |                                |
+|   完成   |     have / has done      |       had done        |           will / shall have done           |    would / should have done    |
+|   被动   |   have / has been done   |     had been done     |                                            |                                |
+| 完成进行 |  have / has been doing   |    had been doing     |        will / shall have been doing        | would / should have been doing |
+| 被动 |                          |                       |                                            |                                |
+
+- 现在
+
+  - 一般现在时
+
+    - 例句
+
+      - I **watch** a game
+
+      - A game **is watched** by me
+
+    - 用法
+      - 无特殊时态提示词
+      - 真理 名言 事实
+        - The boiling point of water is 100℃
+      - 陈述时刻表
+        - The train leaves at **seven o'clock**
+      - 每一天/年或经常重复的动作
+        - I go hiking **every Monday**
+      - 主将从现
+        - I **will appreciate** you, when you **help** me
+      - 主情从现
+      - 主祈从现
+      - 时间状语从句
+      - 条件状语从句
+      - 让步状语从句
+
+  - 现在进行时
+    - 例句
+      - I **am watching** a game
+      - A game **is being watched** by me
+    - 分类
+      - 某一时刻
+        - I am reading
+      - 瞬间动词
+        - When you arrive, I am reading
+      - now
+        - I am reading book now
+      - 表反复或习惯性动作, 如 always
+      - 情景对话, 描述打电话时的回复句
+  - 现在完成时
+    - 例句
+      - I **have watched** a game
+      - A game **has been watched** by me
+    - 用法
+      - for + 时间段
+      - since + 时间点
+      - by the time 届时
+      - so far 到目前为止
+      - up to now 到目前为止
+      - yet 已经
+      - many / three / four times 表多次
+      - it is + 序数词 + time + that
+      - in the past time / year
+    - 拓展
+      - for + 时间段
+        - 延续性动词 完成时
+        - 非延续动词 一般过去时
+  - 现在完成进行时
+    - 例句
+      - I **have been looking** for my book
+    - 用法
+      - 无被动语态 表示发生在过去一直持续到现在的动作 译 一直 或 已经
+
+- 过去
+  - 过去一般时
+    - 例句
+      - I **changed** my mind
+      - An enrance **was blocked** off yesterday
+    - 用法
+      - 从句和主句时态一般要保持一致, 即使是在描述过去发生的事情
+    - 拓展
+      - It is (high) time that 后的谓语动词用一般过去时或 should do, should 不能省略, did 和 should do 优先选 did
+        - It is high time that we **should study** hard
+        - It is high time that we **studied** hard
+      - yesterday last year just now 一般过去时
+        - We **bought** a book just now
+      - for + 时间段 一般过去时
+  - 过去进行时
+    - 例句
+      - When you **arrived**, I was doing homework
+      - I **was watching** TV at home when it rained last weekend
+      - The road **was being built** last year
+    - 用法
+      - 强调过去某一时刻发生的事情
+      - 表示动作一直在进行没有间断
+      - 表示过去某一时刻的时间状语从句中谓语动词用了一般过去时, 主句谓语动词应用法过去进行时
+  - 过去完成时
+    - 例句
+      - I **had watched** the game for a long time yesterday
+      - A game **had been watched** by me by 7 yesterday
+    - 用法
+      - 表示过去发生的事情, 对未来的的事情发生了影响
+      - 出现过去完成提示词, by + 过去的时间
+  - 过去完成进行时
+    - 例句
+      - By then time Jane arrived we **had been waiting** for 3 hours
+    - 用法
+      - 译为 一直 或 已经, 表示动作从过去某一时间之前开始, 到过去某一时间仍然在进行或刚刚结束
+- 将来
+  - 一般将来时
+    - 例句
+      - I **will do** well in the exam
+      - The gift **will be wrapped**
+    - 用法
+      - 表示发生在未来的一件事或某种情况
+    - 注意
+      - 当位移动词做谓语时, 可以用法进行时表示将来, 如 be going, be leaving, be coming, be arriving
+  - 将来进行时
+    - 例句
+      - Tomorrow 12 o'clock, alarm **will be ringing** up
+    - 用法
+      - 表示某一时刻发生的事情
+  - 将来完成时
+    - 例句
+      - I **will have finished** my homework next week
+      - The work **will have been finished** tomorrow
+    - 用法
+      - 表示将来某个时刻以前已经完成或一直持续的动作
+  - 将来完成进行时
+    - 例句
+      - By the time John retires, James **will have been practicing** for 10 years
+    - 用法
+      - 将来某时某动作已持续多久
+- ~~过去将来~~
+
+---
+
+- 特别注意
+  - 主将从现一般出现在状语从句中, 和定语从句, 名词性从句无关
+  - at the time 时间状语, by the time 才是完成时提示词
+- 拓展
+  - 现在完成进行时 过去完成进行时
+    - 现在完成进行时
+      - 动作从过去持续到现在, 还可能会进行下去
+    - 过去完成进行时
+      - 动作从过去某一时间之前开始, 到过去某一时间仍然在进行或刚结束
+  - 遇到完成时提示词, 完成进行时也可以考虑
+    - 例句
+      - I **have written** my homework 完成 强调结果
+      - i **have been writing** my homework 完成进行 强调过程
+
+---
+
+## 主谓一致
+
+- 就近原则
+  - 例句
+    - Not only the students but also their teacher **is** enjoying in this movie
+    - Not you but I **am** to win
+    - I or you **are** a handsome boy
+    - Neither you nor he **is** tired
+    - He or I **am** in the wrong
+    - There **is** Tome or his friends
+  - 提示词
+    - not only ... but also ... 不但, 而且
+    - not ... but ... 不是, 而是
+    - or 或
+    - either ... or ... 要么, 要么
+    - neither ... nor ... 既不, 也不
+    - there be 有
+- 就远原则
+  - 例句
+    - I as well as you **am** a fan of the Little Blue Book
+    - Tom, as sell as his parents, **wants** to go there
+    - The teacher, as well as the students, **is** intersted in the activity
+    - Jim, together with his classmates, **has** seen the film
+    - A woman with twi children **has** come
+    - John, rather than his roommates, **is** to blame
+    - My father, no less than I, **is** a baseball fan
+    - Everybody exceot you **is** down on me
+    - Nobody but two students **is** in the classroom
+  - 提示词
+    - as well as 以及
+    - together / along / combined with 一起
+    - with 一起
+    - rather than 而不是
+    - except 除了
+    - besides 此外
+    - but 但是
+    - including 包括...在内
+    - in addition to 除了
+    - apart from 除了
+- 注意
+  - 一个句子出现多个主语时
+
+---
+
+- 第三人称单数
+  - 例句
+    - The air **smells** very confortable ...
+    - Reading books **improves** my ability
+    - He **imitates** my action
+    - She **takes out** her book from the bag
+    - I **persuade** you into leaving from here
+    - You **talk with** me
+    - He **is** a volunteer
+    - You **are** a king
+    - We **are** family
+    - I **am** the best player in the world
+  - 用法
+    - 当主语是三单的时候, 动词要用三单形式
+    - 只出现在现在时中
+    - 不可数名词是三单
+    - 动名词, 名词性从句是三单
+    - every, each 后无论是什么都是三单
+    - 变形
+      - 直接 + s
+        - play -> plays
+        - want -> wants
+        - work -> works
+        - know -> knows
+        - help -> helps
+        - get -> gets
+      - 以 s x ch sh 结尾的动词 + es
+        - guess -> guessses
+        - fix -> fixes
+        - teach -> teaches
+        - brush -> brushes
+        - wantch -> wantches
+        - catch -> catches
+      - 以辅音字母+y 变 y 为 i+es
+        - study -> studies
+        - carry -> carries
+        - fly -> flies
+        - worry -> worries
+      - 其他
+        - do -> does
+        - go -> goes
+        - have -> has
+        - be -> is
+- 常见三单
+
+  - 人称代词 he she it
+    - He likes watching TV
+    - She has lunch at tweleve
+    - It looks like a cat
+  - 单个人名地名或称呼
+    - Tom likes he monther
+    - Bejing is in China
+    - Uncle Wang often makes cakes
+  - this that the + 单数可数名词作主语
+    - The house is a cute animal
+    - This book is yours
+    - That car is red
+    - The cat os Lucy's
+  - 不定代词 someone somebody nobody everything something, 指示代词 this that
+    - Everyone is here
+    - There is something wrong with the watch
+    - This is a pen
+    - That is an eraser
+  - 不可数名词一般可视为单数, 做主语时
+    - The milk is in the glass
+    - The bread is very small
+  - 数字或字母做主语时
+    - '6' is a lucky nubmer
+    - 'I' is a letter
+  - every each 等修饰单数可数名词时
+    - Every seat has been cleaned
+
+---
+
+- 常见单复数形式
+  - 名词后常见的谓语动词的但复数形式
+    - number of
+      - 用法
+        - the number of 单数, ...的数量
+        - a number of 复数, 大量的, 许多
+      - 例句
+        - The number of firneds is nine 朋友的数量为 9 个
+        - A number of firends support my view 许多朋友都支持我的观点
+    - quantity of
+      - 用法
+        - quantities of 复数, 许多 , 大量的
+        - a quantity of 单复数由后面的名词决定, 一些
+      - 例句
+        - Quantities of people wear masks 许多人戴着口罩
+        - A quantity of flowers have withered 许多花都枯萎的了
+        - A quantity of money is lent to you 许多钱都借给你了
+    - A of B
+      - 用法
+        - A of B 取决于 A, B 的 A
+      - 例句
+        - The color of cars is red 汽车的颜色是红色的
+        - The package of the gift are very beautiful 礼物的包装非常漂亮
+    - 分数结构
+      - 用法
+        - two fufths of 取决于 of 后
+        - one third of 取决于 of 后
+        - 70 percent of 取决于 of 后
+      - 例句
+        - Two fifths of the books are black 五分之二的书都是黑色的
+        - One fifth of the books are new 五分之一的书是新的
+        - One third of the books are old 三分之一的书都是旧的
+        - 70 percent of the factory is ours 百分之七十的工厂是我们的
+    - 集合名词
+      - 用法
+        - class 表整个班级为单数, 表全体同学为复数
+        - fanily 表整个家庭为单数, 表家庭成员为复数
+      - 例句
+        - The class support this decision
+        - The class ranks first in this competition
+    - 特殊用法
+      - 用法
+        - both A and B 复数, A 和 B 都
+        - every / each 单数, 每个, 每一个
+        - 定冠词 A and B 单数, A 兼 B
+        - 定冠词 A and 冠词 B 复数, A 和 B
+        - 动名词 / 动名词短语 作主语, 单数
+      - 例句
+        - Both pencils and erasers are out stationery
+        - Every student takes part in the actiony
+        - The teacher and write is my friend
+        - The teacher and the write are my friends
+        - Reading books is a good habit
+  - 定语从句中谓语动词的单复数形式
+    - 用法
+      - the only one of + 名词复数 + 定语从句 单数
+      - one of + 名词复数 + 定语从句 定语从句动词由修饰词决定?复数形式
+    - 例句
+      - He is the only one of students that is selected 他是唯一一个被选中的学生
+      - He is one of students who are selected 他被选中的学生之一
+
+---
+
+- 动词
+  - 助动词
+    - 在句子中充当成分, 无实际意义
+    - I was presented with a prize
+    - I have finished the work
+  - 实义动词
+    - 有具体含义的词(基本更够做出动作的词)
+    - I buy a cake
+  - 系动词
+  - 情态动词
+    - 后接动词原形, 情态动词和谓语动词一起构成谓语动词
+    - I must buy a cake
+    - 常见情态动词
+      - can / could
+      - may might
+      - must
+      - need
+      - ought to
+      - dare dared
+      - shall should
+      - will would
+
+---
+
+## 非谓语动词
+
+- 英语成分
+  - 主
+  - 谓
+  - 宾
+  - 表
+  - 定
+  - 状
+  - 补
+- 例句
+  - **Playing** the paino is a difficult thing 弹钢琴是一件很难的事情
+  - My favirite thing is **reading**
+  - I stand outside **waiting for** Mr.Chen
+  - **Climbing** mountain is very intersting
+  - I contacted my teacher **to ask for** advice
+
+---
+
+- 分类
+  - 动名词
+    - doing 仅改变词性, 不改变意思
+  - 分词
+    - 现在分词
+      - doing 进行, 主动
+    - 过去分词
+      - done 完成, 被动
+  - 不定时
+    - to do 目的/将来
+- 例子
+  - wait
+    - to wait 不定式 为了等待, 将等待
+    - waiting 动名词 等待
+    - waiting 现在分词 正在等待, 主动等待
+    - waited 过去分词 被等待, 已经等了
+  - purchase
+    - to purchase 不定时 为了购买, 将购买
+    - purchaseing 动名词 购买
+    - purchaseing 现在分词 正在购买(主动)
+    - purchased 过去分词 已经购买(被动)
+
+---
+
+- 不定式
+  - 例句
+    - I contacted my teacher to ask for advice
+    - I contacted my teacher to be guided
+  - 变形
+    - to do / to be done
+    - to have done / to have been done
+    - to be doing / to be being done
+- 动名词
+  - paying attention to idols be able to close our distance
+  - Being noticed has affected my normal life
+- 现在分词
+  - 例句
+    - I having watered the tree, then I felt tired
+    - The tree had been watered by me, then I felt tired
+  - 变形
+    - do / doing
+    - have / had done -> having done
+    - have / had been done -> having been done
+- 过去分词
+  - I was hinted, I worked this problem out
+
+---
+
+- 非谓语动词充当成分
+  - 主语
+    - 不定式 动名词
+    - 例句
+      - Reading books is a good habit
+      - To get up early is necessary
+  - 宾语 表语
+    - 不定式 动名词
+    - 例句
+      - My dream is to be a doctor
+      - My favorite thing is reading books
+  - 状语
+    - 分词 不定式
+    - 例句
+      - I hurried to the station to catch the train
+      - To catch the train, I hurried to the station
+      - Asked to walk to company, I feel very unfair
+  - 定语
+    - 分词 不定式
+    - 例句
+      - The book bought me is Harry Potter
+      - The book to be published is Harry Potter

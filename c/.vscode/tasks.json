@@ -1,0 +1,73 @@
+{
+  "tasks": [
+    {
+      "type": "cppbuild",
+      "label": "C/C++: CL.exe 生成活动文件",
+      "command": "CL.EXE",
+      "args": [
+        "/Od",
+        // 禁用优化
+        "/Yd",
+        // 将完整的调试信息放在所有对象文件中
+        "/Zi",
+        // 生成完整的调试信息。
+        "/Za",
+        // 	在 C 代码中禁用某些 C89 语言扩展
+        "/EHsc",
+        // extern "C" 默认为 nothrow
+        "/nologo",
+        // nologo
+        "/W4",
+        // 设置输出警告等级
+        "/TC",
+        // 指定所有源文件都是 C
+        "/GZ",
+        // 已弃用。 启用快速检查
+        "/Fa${fileDirname}\\debug\\",
+        // 创建程序集列表文件
+        "/Fd${fileDirname}\\debug\\",
+        // 重命名程序数据库文件
+        "/Fo${fileDirname}\\debug\\",
+        // 创建对象文件
+        "/Fe${fileDirname}\\debug\\${fileBasenameNoExtension}.exe",
+        // 重命名可执行文件
+        "${file}"
+      ],
+      "options": {
+        "cwd": "${fileDirname}"
+      },
+      "problemMatcher": [
+        "$msCompile"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "detail": "调试器生成的任务。"
+    },
+    {
+      "type": "cppbuild",
+      "label": "C/C++: gcc.exe 生成活动文件",
+      "command": "gcc.exe",
+      "args": [
+        "-fdiagnostics-color=always",
+        "-g",
+        "${file}",
+        "-o",
+        "${fileDirname}\\debug\\${fileBasenameNoExtension}.exe"
+      ],
+      "options": {
+        "cwd": "${fileDirname}"
+      },
+      "problemMatcher": [
+        "$gcc"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": false
+      },
+      "detail": "调试器生成的任务。"
+    }
+  ],
+  "version": "2.0.0"
+}
