@@ -414,8 +414,7 @@ public class TreeMap<K, V> implements SortedMap<K, V> {
 
             @Override
             public Entry<K, V> next() {
-                TreeNode<K, V> next = iter.next();
-                return new Pair<>(next.key, next.value);
+                return iter.next();
             }
         }
     }
