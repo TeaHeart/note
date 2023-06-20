@@ -104,45 +104,4 @@ public interface Map<K, V> {
          */
         V setValue(V value);
     }
-
-
-    /**
-     * 键值对
-     *
-     * @param <K> 键的类型
-     * @param <V> 值的类型
-     */
-    class Pair<K, V> implements Entry<K, V> {
-        private K key;
-        private V value;
-
-        public Pair(K key, V value) {
-            this.key = key;
-            this.value = value;
-        }
-
-        @Override
-        public K getKey() {
-            return key;
-        }
-
-        @Override
-        public K setKey(K key) {
-            K old = this.key;
-            this.key = key;
-            return old;
-        }
-
-        @Override
-        public V getValue() {
-            return value;
-        }
-
-        @Override
-        public V setValue(V value) {
-            V old = this.value;
-            this.value = value;
-            return old;
-        }
-    }
 }

@@ -332,8 +332,7 @@ public class HashMap<K, V> implements Map<K, V> {
 
             @Override
             public Entry<K, V> next() {
-                Node<K, V> next = iter.next();
-                return new Pair<>(next.key, next.value);
+                return iter.next();
             }
         }
     }
