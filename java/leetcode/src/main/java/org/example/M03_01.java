@@ -1,6 +1,6 @@
 package org.example;
 
-public class M3_1 {
+public class M03_01 {
     class TripleInOne {
         int[][] stack;
         int[] size;

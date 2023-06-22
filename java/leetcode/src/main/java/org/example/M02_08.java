@@ -1,6 +1,6 @@
 package org.example;
 
-public class M2_8 {
+public class M02_08 {
     public ListNode detectCycle(ListNode head) {
         ListNode slow = head;
         ListNode fast = head;

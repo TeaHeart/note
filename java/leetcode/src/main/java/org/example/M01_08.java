@@ -1,6 +1,6 @@
 package org.example;
 
-public class M1_8 {
+public class M01_08 {
     public void setZeroes(int[][] matrix) {
         int m = matrix.length;
         int n = matrix[0].length;

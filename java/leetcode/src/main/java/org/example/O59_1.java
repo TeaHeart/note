@@ -3,7 +3,7 @@ package org.example;
 import java.util.PriorityQueue;
 import java.util.Queue;
 
-public class T59_1 {
+public class O59_1 {
     public int[] maxSlidingWindow(int[] nums, int k) {
         Queue<int[]> queue = new PriorityQueue<>(k, (x, y) -> x[0] != y[0] ? Integer.compare(y[0], x[0]) : Integer.compare(y[1], x[1]));
         for (int i = 0; i < k; i++) {

@@ -1,6 +1,6 @@
 package org.example;
 
-public class M1_7 {
+public class M01_07 {
     public void rotate(int[][] matrix) {
         for (int i = 0; i < matrix.length / 2; i++) {
             swap(matrix, i, matrix.length - i - 1);

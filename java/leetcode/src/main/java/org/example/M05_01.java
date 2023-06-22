@@ -1,6 +1,6 @@
 package org.example;
 
-public class M5_1 {
+public class M05_01 {
     public int insertBits(int N, int M, int i, int j) {
         int l = N >> j >> 1 << j << 1;
         int m = M << i;

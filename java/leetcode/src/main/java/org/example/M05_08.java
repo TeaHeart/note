@@ -1,6 +1,6 @@
 package org.example;
 
-public class M5_8 {
+public class M05_08 {
     public int[] drawLine(int length, int w, int x1, int x2, int y) {
         int row = w / 32 * y;
         int[] array = new int[length];
