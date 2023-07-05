@@ -3,7 +3,7 @@ package org.example;
 import java.util.HashSet;
 import java.util.Set;
 
-public class O2_56 {
+public class O2_056 {
     public boolean findTarget(TreeNode root, int k) {
         return dfs(root, k, new HashSet<>());
     }

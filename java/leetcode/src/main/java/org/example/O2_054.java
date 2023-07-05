@@ -1,6 +1,6 @@
 package org.example;
 
-public class O2_54 {
+public class O2_054 {
     public TreeNode convertBST(TreeNode root) {
         dfs(root, new int[]{0});
         return root;

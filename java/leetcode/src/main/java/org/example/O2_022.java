@@ -1,6 +1,6 @@
 package org.example;
 
-public class O2_22 {
+public class O2_022 {
     public ListNode detectCycle(ListNode head) {
         ListNode slow = head;
         ListNode fast = head;

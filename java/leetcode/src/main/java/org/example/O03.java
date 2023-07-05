@@ -1,6 +1,6 @@
 package org.example;
 
-public class O3 {
+public class O03 {
     public int findRepeatNumber(int[] nums) {
         int i = 0;
         while (i < nums.length) {

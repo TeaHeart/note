@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class O2_83 {
+public class O2_083 {
     public List<List<Integer>> permute(int[] nums) {
         List<List<Integer>> lists = new ArrayList<>();
         List<Integer> list = new ArrayList<>();

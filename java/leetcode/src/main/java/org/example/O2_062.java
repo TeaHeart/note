@@ -3,7 +3,7 @@ package org.example;
 import java.util.HashMap;
 import java.util.Map;
 
-public class O2_62 {
+public class O2_062 {
     class Trie {
         Node root = new Node();
 

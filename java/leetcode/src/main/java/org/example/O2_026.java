@@ -1,6 +1,6 @@
 package org.example;
 
-public class O2_26 {
+public class O2_026 {
     public void reorderList(ListNode head) {
         ListNode left = head;
         ListNode right = reverse(middleNode(head));

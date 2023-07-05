@@ -3,7 +3,7 @@ package org.example;
 import java.util.ArrayDeque;
 import java.util.Deque;
 
-public class O9 {
+public class O09 {
     class CQueue {
         Deque<Integer> left = new ArrayDeque<>();
         Deque<Integer> right = new ArrayDeque<>();

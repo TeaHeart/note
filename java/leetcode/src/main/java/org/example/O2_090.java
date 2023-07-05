@@ -1,6 +1,6 @@
 package org.example;
 
-public class O2_90 {
+public class O2_090 {
     public int rob(int[] nums) {
         if (nums.length == 1) {
             return nums[0];

@@ -3,7 +3,7 @@ package org.example;
 import java.util.ArrayList;
 import java.util.List;
 
-public class O6 {
+public class O06 {
     public int[] reversePrint(ListNode head) {
         List<Integer> list = new ArrayList<>();
         dfs(head, list);

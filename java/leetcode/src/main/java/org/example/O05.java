@@ -1,6 +1,6 @@
 package org.example;
 
-public class O5 {
+public class O05 {
     public String replaceSpace(String s) {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < s.length(); i++) {
