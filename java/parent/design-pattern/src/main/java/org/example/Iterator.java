@@ -1,30 +1,6 @@
 package org.example;
 
-/**
- * 迭代器模式
- */
 public @interface Iterator {
-    /**
-     * 抽象迭代器-学生迭代器
-     */
-    interface StudentIterator {
-        boolean hasNext();
-
-        Student next();
-    }
-
-    /**
-     * 抽象聚合角色-学生汇总
-     */
-    interface StudentAggregate {
-        void add(Student student);
-
-        StudentIterator iterator();
-    }
-
-    /**
-     * 学生
-     */
     class Student {
         private final int id;
         private final String name;
@@ -40,9 +16,12 @@ public @interface Iterator {
         }
     }
 
-    /**
-     * 具体迭代器-学生迭代器
-     */
+    interface StudentIterator {
+        boolean hasNext();
+
+        Student next();
+    }
+
     class StudentIteratorImpl implements StudentIterator {
         private final Student[] students;
         private final int fence;
@@ -64,9 +43,12 @@ public @interface Iterator {
         }
     }
 
-    /**
-     * 具体聚合角色-学生汇总
-     */
+    interface StudentAggregate {
+        void add(Student student);
+
+        StudentIterator iterator();
+    }
+
     class StudentAggregateImpl implements StudentAggregate {
         private final Student[] students;
         private int size;

@@ -3,20 +3,11 @@ package org.example;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * 解释器模式
- */
 public @interface Interpreter {
-    /**
-     * 抽象表达式
-     */
     interface Expression {
         int interpret(Context context);
     }
 
-    /**
-     * 终结符表达式-变量
-     */
     class Variable implements Expression {
         private final String name;
 
@@ -35,9 +26,6 @@ public @interface Interpreter {
         }
     }
 
-    /**
-     * 非终结表达式-加法
-     */
     class Plus implements Expression {
         private final Expression left;
         private final Expression right;
@@ -58,9 +46,6 @@ public @interface Interpreter {
         }
     }
 
-    /**
-     * 非终结表达式-减法
-     */
     class Minus implements Expression {
         private final Expression left;
         private final Expression right;
@@ -81,9 +66,6 @@ public @interface Interpreter {
         }
     }
 
-    /**
-     * 环境-上下文
-     */
     class Context {
         private final Map<Variable, Integer> map = new HashMap<>();
 

@@ -1,23 +1,6 @@
 package org.example;
 
-/**
- * 建造者模式
- */
 public @interface Builder {
-    /**
-     * 抽象建造者-蛋糕建造者
-     */
-    interface CakeBuilder {
-        void making();
-
-        void packaging();
-
-        Cake build();
-    }
-
-    /**
-     * 产品-蛋糕
-     */
     class Cake {
         private String name;
         private String packing;
@@ -44,11 +27,23 @@ public @interface Builder {
         }
     }
 
-    /**
-     * 具体建造者-奶油蛋糕建造者
-     */
-    class CreamCakeCakeBuilder implements CakeBuilder {
-        private final Cake cake = new Cake();
+    interface CakeBuilder {
+        void prepare();
+
+        void making();
+
+        void packaging();
+
+        Cake complete();
+    }
+
+    class CreamCakeBuilder implements CakeBuilder {
+        private Cake cake;
+
+        @Override
+        public void prepare() {
+            cake = new Cake();
+        }
 
         @Override
         public void making() {
@@ -61,16 +56,18 @@ public @interface Builder {
         }
 
         @Override
-        public Cake build() {
+        public Cake complete() {
             return cake;
         }
     }
 
-    /**
-     * 具体建造者-巧克力蛋糕建造者
-     */
-    class ChocolateCakeCakeBuilder implements CakeBuilder {
-        private final Cake cake = new Cake();
+    class ChocolateCakeBuilder implements CakeBuilder {
+        private Cake cake;
+
+        @Override
+        public void prepare() {
+            cake = new Cake();
+        }
 
         @Override
         public void making() {
@@ -83,14 +80,11 @@ public @interface Builder {
         }
 
         @Override
-        public Cake build() {
+        public Cake complete() {
             return cake;
         }
     }
 
-    /**
-     * 指挥者-蛋糕建造者的指挥者
-     */
     class CakeBuilderBaker {
         private final CakeBuilder builder;
 
@@ -99,15 +93,13 @@ public @interface Builder {
         }
 
         public Cake build() {
+            builder.prepare();
             builder.making();
             builder.packaging();
-            return builder.build();
+            return builder.complete();
         }
     }
 
-    /**
-     * 产品-计算机
-     */
     class Computer {
         private final String board;
         private final String cpu;
@@ -126,9 +118,6 @@ public @interface Builder {
             return String.format("Computer{board='%s', cpu='%s', memory='%s', disk='%s'}", board, cpu, memory, disk);
         }
 
-        /**
-         * 具体建造者-计算机建造者
-         */
         public static class ComputerBuilder {
             private String board;
             private String cpu;
