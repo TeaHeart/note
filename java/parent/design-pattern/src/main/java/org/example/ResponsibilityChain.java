@@ -1,12 +1,6 @@
 package org.example;
 
-/**
- * 责任链模式
- */
 public @interface ResponsibilityChain {
-    /**
-     * 请假
-     */
     class LeaveRequest {
         private final String name;
         private final int num;
@@ -25,9 +19,6 @@ public @interface ResponsibilityChain {
         }
     }
 
-    /**
-     * 抽象处理者-请假处理
-     */
     abstract class Handler {
         protected static final int LEVEL_ONE = 1;
         protected static final int LEVEL_THREE = 3;
@@ -58,9 +49,6 @@ public @interface ResponsibilityChain {
         }
     }
 
-    /**
-     * 具体处理者-组长
-     */
     class GroupLeader extends Handler {
         public GroupLeader(Handler handler) {
             super(LEVEL_ONE, handler);
@@ -72,9 +60,6 @@ public @interface ResponsibilityChain {
         }
     }
 
-    /**
-     * 具体处理者-经理
-     */
     class Manager extends Handler {
         public Manager(Handler handler) {
             super(LEVEL_THREE, handler);
@@ -86,9 +71,6 @@ public @interface ResponsibilityChain {
         }
     }
 
-    /**
-     * 具体处理者-总经理
-     */
     class GeneralManager extends Handler {
         public GeneralManager(Handler handler) {
             super(LEVEL_SEVEN, handler);

@@ -3,13 +3,7 @@ package org.example;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * 组合模式
- */
 public @interface Composite {
-    /**
-     * 抽象根节点
-     */
     abstract class MenuComponent {
         protected String name;
         protected int level;
@@ -19,11 +13,10 @@ public @interface Composite {
         }
 
         public void add(MenuComponent component) {
-            throw new RuntimeException("不支持该操作");
         }
 
         public MenuComponent get(int index) {
-            throw new RuntimeException("不支持该操作");
+            return null;
         }
 
         @Override
@@ -37,9 +30,6 @@ public @interface Composite {
         }
     }
 
-    /**
-     * 树枝节点
-     */
     class Menu extends MenuComponent {
         private final List<MenuComponent> components = new ArrayList<>();
 
@@ -68,9 +58,6 @@ public @interface Composite {
         }
     }
 
-    /**
-     * 叶子节点
-     */
     class MenuItem extends MenuComponent {
         public MenuItem(String name) {
             super(name);

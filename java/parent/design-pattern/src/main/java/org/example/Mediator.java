@@ -1,19 +1,6 @@
 package org.example;
 
-/**
- * 中介模式
- */
 public @interface Mediator {
-    /**
-     * 抽象中介类
-     */
-    interface HouseMediator {
-        void contact(String msg, Person person);
-    }
-
-    /**
-     * 抽象同事类-人
-     */
     abstract class Person {
         protected final String name;
         protected final HouseMediator mediator;
@@ -32,27 +19,22 @@ public @interface Mediator {
         }
     }
 
-    /**
-     * 具体同事类-租户
-     */
     class Tenant extends Person {
         public Tenant(String name, HouseMediator mediator) {
             super(name, mediator);
         }
     }
 
-    /**
-     * 具体同事类-房东
-     */
     class HouseOwner extends Person {
         public HouseOwner(String name, HouseMediator mediator) {
             super(name, mediator);
         }
     }
 
-    /**
-     * 具体中介类-房屋中介
-     */
+    interface HouseMediator {
+        void contact(String msg, Person person);
+    }
+
     class HouseMediatorStructure implements HouseMediator {
         private HouseOwner owner;
         private Tenant tenant;

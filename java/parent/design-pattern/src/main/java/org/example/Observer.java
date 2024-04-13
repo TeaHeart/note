@@ -3,31 +3,11 @@ package org.example;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * 观察者模式
- */
 public @interface Observer {
-    /**
-     * 抽象观察者-视频观察者
-     */
     interface VideoObserver {
         void update(String msg);
     }
 
-    /**
-     * 抽象主题-视频
-     */
-    interface Video {
-        void attach(VideoObserver observer);
-
-        void detach(VideoObserver observer);
-
-        void notify(String msg);
-    }
-
-    /**
-     * 具体观察者-用户
-     */
     class User implements VideoObserver {
         private final String name;
 
@@ -41,9 +21,14 @@ public @interface Observer {
         }
     }
 
-    /**
-     * 具体主题-订阅视频
-     */
+    interface Video {
+        void attach(VideoObserver observer);
+
+        void detach(VideoObserver observer);
+
+        void notify(String msg);
+    }
+
     class SubscriptionVideo implements Video {
         private final List<VideoObserver> observers = new ArrayList<>();
 

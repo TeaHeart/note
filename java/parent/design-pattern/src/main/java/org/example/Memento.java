@@ -1,19 +1,9 @@
 package org.example;
 
-/**
- * 备忘录模式
- */
 public @interface Memento {
-    /**
-     * 备忘录接口-对外提供窄接口
-     */
     interface RoleBMemento {
-
     }
 
-    /**
-     * 发起人-角色A
-     */
     class GameRoleA {
         private int hp;
         private int atk;
@@ -47,9 +37,6 @@ public @interface Memento {
         }
     }
 
-    /**
-     * 备忘录-角色A状态备忘录
-     */
     class RoleStateMementoA {
         private final int hp;
         private final int atk;
@@ -74,9 +61,6 @@ public @interface Memento {
         }
     }
 
-    /**
-     * 备忘录管理-角色A状态备忘录管理
-     */
     class RoleStateCaretakerA {
         private RoleStateMementoA memento;
 
@@ -89,9 +73,6 @@ public @interface Memento {
         }
     }
 
-    /**
-     * 发起人-角色B
-     */
     class GameRoleB {
         private int hp;
         private int atk;
@@ -125,9 +106,6 @@ public @interface Memento {
             return String.format("GameRoleB{hp=%d, atk=%d, def=%d}", hp, atk, def);
         }
 
-        /**
-         * 备忘录-角色B状态备忘录
-         */
         private static class RoleStateMementoB implements RoleBMemento {
             private final int hp;
             private final int atk;
@@ -153,9 +131,6 @@ public @interface Memento {
         }
     }
 
-    /**
-     * 备忘录管理-角色B状态备忘录管理
-     */
     class RoleStateCaretakerB {
         private RoleBMemento memento;
 

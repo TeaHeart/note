@@ -5,20 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * 命令模式
- */
 public @interface Command {
-    /**
-     * 抽象命令
-     */
-    interface Cmd {
-        void exec();
-    }
-
-    /**
-     * 订单
-     */
     class Order {
         private final int id;
         private final Map<String, Integer> foods = new HashMap<>();
@@ -33,18 +20,16 @@ public @interface Command {
         }
     }
 
-    /**
-     * 接收者-厨师
-     */
     class Chef {
         public void makeFood(String name, int num) {
             System.out.printf("%s:%d个\n", name, num);
         }
     }
 
-    /**
-     * 具体命令-订单命令
-     */
+    interface Cmd {
+        void exec();
+    }
+
     class OrderCmd implements Cmd {
         private final Chef receiver;
         private final Order order;
@@ -66,19 +51,16 @@ public @interface Command {
         }
     }
 
-    /**
-     * 请求者-服务员
-     */
     class Waiter {
-        private final List<Cmd> cmds = new ArrayList<>();
+        private final List<Cmd> cmdList = new ArrayList<>();
 
-        public Waiter addCommand(Cmd cmd) {
-            cmds.add(cmd);
+        public Waiter accept(Cmd cmd) {
+            cmdList.add(cmd);
             return this;
         }
 
         public void orderUp() {
-            for (Cmd cmd : cmds) {
+            for (Cmd cmd : cmdList) {
                 cmd.exec();
             }
         }

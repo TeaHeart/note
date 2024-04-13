@@ -1,19 +1,10 @@
 package org.example;
 
-/**
- * 策略模式
- */
 public @interface Strategy {
-    /**
-     * 抽象策略类-销售策略
-     */
     interface MarketingStrategy {
         void show();
     }
 
-    /**
-     * 具体策略类-销售策略A
-     */
     class MarketingStrategyA implements MarketingStrategy {
         @Override
         public void show() {
@@ -21,9 +12,6 @@ public @interface Strategy {
         }
     }
 
-    /**
-     * 具体策略类-销售策略B
-     */
     class MarketingStrategyB implements MarketingStrategy {
         @Override
         public void show() {
@@ -31,9 +19,6 @@ public @interface Strategy {
         }
     }
 
-    /**
-     * 具体策略类-销售策略C
-     */
     class MarketingStrategyC implements MarketingStrategy {
         @Override
         public void show() {
@@ -41,9 +26,6 @@ public @interface Strategy {
         }
     }
 
-    /**
-     * 环境类
-     */
     class SaleMan {
         private MarketingStrategy strategy;
 
