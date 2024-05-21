@@ -352,7 +352,7 @@
                     <tr>
                         <th>操作</th>
                         <td>
-                            <a href="#" onclick="changePassword(${currUser.id})">修改密码</a>
+                            <a href="#" onclick="changePassword()">修改密码</a>
                             <a href="#" onclick="logout()">登出</a>
                         </td>
                     </tr>
@@ -482,11 +482,10 @@
                 });
         }
 
-        function changePassword(id) {
+        function changePassword() {
             const parent = event.target.closest("table");
             const password = parent.querySelector("[name='password']").value;
             post("/api/auth/change-password", {
-                id,
                 password,
             }).then(_ => {
                 currUser = null;

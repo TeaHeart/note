@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpSession;
-import java.util.Objects;
 
 @Service
 public class AuthService extends ServiceImpl<UserMapper, User> {
@@ -38,11 +37,11 @@ public class AuthService extends ServiceImpl<UserMapper, User> {
 
     public boolean changePassword(User user) {
         User me = me();
-        if (!Objects.equals(me.getId(), user.getId()) || !Privilege.USER_CHANGE_PASSWORD.hasPrivilege(me.getPrivilege())) {
+        if (!Privilege.USER_CHANGE_PASSWORD.hasPrivilege(me.getPrivilege())) {
             throw new BusinessException("没有权限");
         }
         return lambdaUpdate()
-                .eq(User::getId, user.getId())
+                .eq(User::getId, me.getId())
                 .set(User::getPassword, user.getPassword())
                 .update() && logout();
     }
