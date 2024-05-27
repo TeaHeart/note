@@ -1,4 +1,4 @@
-# django 示例
+# 用户管理系统
 
 ---
 
@@ -8,8 +8,6 @@
 - django3.2.5
 - docker1.13.1
 - centos7
-
----
 
 ## 运行
 
@@ -33,3 +31,9 @@ sudo docker build -t django-example:1.0 .
 sudo docker run --name django-example -d -p 8080:8080 django-example:1.0 
 # sudo docker ps
 ```
+
+## 管理员
+
+| ID | 用户名 | 密码 |
+|:--:|:---:|:--:|
+| 1  | sa  | sa |
