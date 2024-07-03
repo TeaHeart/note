@@ -1,14 +1,14 @@
 {
     "$help": "https://aka.ms/terminal-documentation",
     "$schema": "https://aka.ms/terminal-profiles-schema",
-    "actions": 
+    "actions":
     [
         {
             "command": "find",
             "keys": "ctrl+shift+f"
         },
         {
-            "command": 
+            "command":
             {
                 "action": "splitPane",
                 "split": "auto",
@@ -17,7 +17,7 @@
             "keys": "alt+shift+d"
         },
         {
-            "command": 
+            "command":
             {
                 "action": "copy",
                 "singleLine": false
@@ -29,30 +29,32 @@
             "keys": "ctrl+v"
         }
     ],
+    "centerOnLaunch": true,
+    "confirmCloseAllTabs": false,
     "copyFormatting": "none",
     "copyOnSelect": true,
     "defaultProfile": "{ba4b9467-e165-4ab6-8127-852dffa69686}",
     "experimental.rendering.forceFullRepaint": false,
     "experimental.rendering.software": false,
-    "newTabMenu": 
+    "newTabMenu":
     [
         {
             "type": "remainingProfiles"
         }
     ],
-    "profiles": 
+    "profiles":
     {
-        "defaults": 
+        "defaults":
         {
             "colorScheme": "Same",
-            "font": 
+            "font":
             {
                 "face": "JetBrains Mono"
             },
             "opacity": 50,
             "useAtlasEngine": false
         },
-        "list": 
+        "list":
         [
             {
                 "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
@@ -88,13 +90,13 @@
             {
                 "commandline": "C:\\Program Files\\Redis\\redis-cli.exe",
                 "guid": "{0502333c-dba8-4218-9138-16af810028fd}",
-                "hidden": true,
+                "hidden": false,
                 "name": "redis"
             },
             {
-                "commandline": "C:\\Program Files\\MongoDB\\Server\\4.4\\bin\\mongo.exe",
+                "commandline": "C:\\Program Files\\MongoDB\\Server\\5.0\\bin\\mongo.exe",
                 "guid": "{4392591c-2842-4a51-8df2-414eb35f77a5}",
-                "hidden": true,
+                "hidden": false,
                 "name": "mongodb"
             },
             {
@@ -117,7 +119,7 @@
             }
         ]
     },
-    "schemes": 
+    "schemes":
     [
         {
             "background": "#0C0C0C",
