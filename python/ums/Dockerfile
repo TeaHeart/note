@@ -1,8 +1,8 @@
 FROM python:3.9
 
-WORKDIR /opt/module/django-example
+WORKDIR /opt/app/ums
 
-ADD . /opt/module/django-example
+ADD . /opt/app/ums
 
 RUN pip3 install -i https://pypi.tuna.tsinghua.edu.cn/simple -r requirements.txt
 

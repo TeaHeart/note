@@ -1,14 +1,10 @@
 {
     "$help": "https://aka.ms/terminal-documentation",
     "$schema": "https://aka.ms/terminal-profiles-schema",
-    "actions":
+    "actions": 
     [
         {
-            "command": "find",
-            "keys": "ctrl+shift+f"
-        },
-        {
-            "command":
+            "command": 
             {
                 "action": "splitPane",
                 "split": "auto",
@@ -17,7 +13,11 @@
             "keys": "alt+shift+d"
         },
         {
-            "command":
+            "command": "find",
+            "keys": "ctrl+shift+f"
+        },
+        {
+            "command": 
             {
                 "action": "copy",
                 "singleLine": false
@@ -33,93 +33,41 @@
     "confirmCloseAllTabs": false,
     "copyFormatting": "none",
     "copyOnSelect": true,
-    "defaultProfile": "{ba4b9467-e165-4ab6-8127-852dffa69686}",
+    "defaultProfile": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
     "experimental.rendering.forceFullRepaint": false,
     "experimental.rendering.software": false,
-    "newTabMenu":
+    "newTabMenu": 
     [
         {
             "type": "remainingProfiles"
         }
     ],
-    "profiles":
+    "profiles": 
     {
-        "defaults":
+        "defaults": 
         {
             "colorScheme": "Same",
-            "font":
+            "font": 
             {
                 "face": "JetBrains Mono"
             },
-            "opacity": 50,
-            "useAtlasEngine": false
+            "opacity": 50
         },
-        "list":
+        "list": 
         [
             {
                 "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
-                "hidden": true,
+                "hidden": false,
                 "name": "Windows PowerShell"
             },
             {
                 "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
                 "hidden": true,
                 "name": "\u547d\u4ee4\u63d0\u793a\u7b26"
-            },
-            {
-                "guid": "{b453ae62-4e3d-5e58-b989-0a998ec441b8}",
-                "hidden": true,
-                "name": "Azure Cloud Shell",
-                "source": "Windows.Terminal.Azure"
-            },
-            {
-                "commandline": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
-                "guid": "{ba4b9467-e165-4ab6-8127-852dffa69686}",
-                "hidden": false,
-                "icon": "ms-appx:///ProfileIcons/pwsh.png",
-                "name": "PowerShell"
-            },
-            {
-                "commandline": "pwsh.exe -NoExit -Command \"&{Import-Module \"\"\"C:\\Program Files\\Microsoft Visual Studio\\2022\\Enterprise\\Common7\\Tools\\Microsoft.VisualStudio.DevShell.dll\"\"\"; Enter-VsDevShell f82394b4 -SkipAutomaticLocation -DevCmdArguments \"\"\"-arch=x64 -host_arch=x64\"\"\"}\"",
-                "guid": "{d947784e-ef7f-4fab-904e-2d9361f4659a}",
-                "hidden": false,
-                "icon": "ms-appx:///ProfileIcons/pwsh.png",
-                "name": "Developer PowerShell for VS 2022",
-                "startingDirectory": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Enterprise"
-            },
-            {
-                "commandline": "C:\\Program Files\\Redis\\redis-cli.exe",
-                "guid": "{0502333c-dba8-4218-9138-16af810028fd}",
-                "hidden": false,
-                "name": "redis"
-            },
-            {
-                "commandline": "C:\\Program Files\\MongoDB\\Server\\5.0\\bin\\mongo.exe",
-                "guid": "{4392591c-2842-4a51-8df2-414eb35f77a5}",
-                "hidden": false,
-                "name": "mongodb"
-            },
-            {
-                "commandline": "\"C:\\Program Files\\MySQL\\MySQL Server 8.0\\bin\\mysql.exe\" \"--defaults-file=C:\\ProgramData\\MySQL\\MySQL Server 8.0\\my.ini\" \"-uroot\" \"-proot\" \"--default-character-set=utf8mb4\"",
-                "guid": "{c0067405-d129-4bd8-b3b4-3575cb681d72}",
-                "hidden": false,
-                "name": "mysql"
-            },
-            {
-                "guid": "{9ccea86e-79ac-5902-8827-b7f76bd7392e}",
-                "hidden": true,
-                "name": "Developer Command Prompt for VS 2022 [4]",
-                "source": "Windows.Terminal.VisualStudio"
-            },
-            {
-                "guid": "{62cf4e5e-cd19-5af4-8b05-9c707b44d5cd}",
-                "hidden": true,
-                "name": "Developer PowerShell for VS 2022 [4]",
-                "source": "Windows.Terminal.VisualStudio"
             }
         ]
     },
-    "schemes":
+    "schemes": 
     [
         {
             "background": "#0C0C0C",

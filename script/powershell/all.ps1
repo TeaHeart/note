@@ -102,56 +102,47 @@ function eBookConvert {
     Remove-Job -State Completed
 }
 
-function HashCheck {
+function HashCompare {
     param (
-        [Parameter(Mandatory)] [ValidateNotNullOrEmpty()] [string] $base,
-        [ValidateNotNullOrEmpty()] [string] $algorithm = "MD5",
-        [ValidateNotNullOrEmpty()] [string] $dest = ".\$algorithm.json",
-        [Parameter(ValueFromPipeline)] [ValidateNotNullOrEmpty()] [System.IO.FileSystemInfo[]] $files = (Get-ChildItem -File -Recurse $base),
-        [ValidateNotNullOrEmpty()] [switch] $quiet = $false,
-        [ValidateNotNullOrEmpty()] [switch] $simple = $false
+        [Parameter(Mandatory)] [ValidateNotNullOrEmpty()] [string] $dir,
+        [ValidateNotNullOrEmpty()] [string] $algorithm = "length",
+        [ValidateNotNullOrEmpty()] [string] $out = ".\$algorithm.json",
+        [Parameter(ValueFromPipeline)] [ValidateNotNullOrEmpty()] [System.IO.FileSystemInfo[]] $files = (Get-ChildItem -File -Recurse $dir),
+        [ValidateNotNullOrEmpty()] [switch] $quiet = $false
     )
-    $base = Join-Path $base "\" | Resolve-Path
-    if (Test-Path($dest)) {
-        $dest = $dest | Resolve-Path
+    $dir = Join-Path $dir "\" | Resolve-Path
+    if (Test-Path($out)) {
+        $out = $out | Resolve-Path
         $map = @{}
-        Get-Content -Encoding UTF8 $dest | ConvertFrom-Json | ForEach-Object { $map[$_.Path] = $_ }
+        (Get-Content $out -Encoding UTF8 | ConvertFrom-Json) | ForEach-Object { $map[$_.Path] = $_ }
         0..($files.Length - 1) | ForEach-Object {
-            $sf = $files[$_].FullName
-            $f = @{
-                Path = $sf.Substring($base.Length)
-                Length = $files[$_].Length
-            }
-            $info = $map[$f.Path]
-            if ($info.Length -ne $f.Length -or (!$simple -and $info.$algorithm -ne ($f.$algorithm = (Get-FileHash -Algorithm $algorithm -LiteralPath $sf).Hash))) {
-                Write-Error "$($f.Path)`n`tExpected: $($info.Length) $($info.$algorithm)`n`tActual: $($f.Length) $($f.$algorithm)`n"
-            }
+            $f = $files[$_]
+            $actual = @{}
+            $actual.Path = $f.FullName.Substring("$dir".Length)
+            $actual.Length = $f.Length
+            $expected = $map[$actual.Path]
             if (!$quiet) {
-                Write-Host "$_/$($files.Length) ~ $sf"
+                Write-Host "$($_)/$($files.Length) + $($actual.Path)"
+            }
+            if ($expected.Length -ne $actual.Length -or (($algorithm -ne "length") -and ($expected.Hash -ne ($actual.Hash = (Get-FileHash -Algorithm $algorithm "$($f.FullName)").Hash)))) {
+                Write-Error "$($actual.Path)`n`tExpected: $($expected.Length) $($expected.Hash)`n`tActual  : $($actual.Length) $($actual.Hash)"
             }
         }
     } else {
-        $map = 0..($files.Length - 1) | ForEach-Object {
-            $sf = $files[$_].FullName
-            $info = @{
-                Path = $sf.Substring($base.Length)
-                Length = $files[$_].Length
-            }
-            if (!$simple) {
-                $info.$algorithm = (Get-FileHash -Algorithm $algorithm -LiteralPath $sf).Hash
-            }
+        0..($files.Length - 1) | ForEach-Object {
+            $f = $files[$_]
+            $info = @{}
+            $info.Path = $f.FullName.Substring("$dir".Length)
+            $info.Length = $f.Length
             if (!$quiet) {
-                Write-Host "$_/$($files.Length) + $($info.Path)"
+                Write-Host "$($_)/$($files.Length) + $($info.Path)"
+            }
+            if ($algorithm -ne "length") {
+                $info.Hash = (Get-FileHash -Algorithm $algorithm "$($f.FullName)").Hash
             }
             return $info
-        }
-        if ($simple) {
-            $map = $map | Select-Object Path, Length | ConvertTo-Json
-        } else {
-            $map = $map | Select-Object Path, Length, $algorithm | ConvertTo-Json
-        }
-        $map | Out-File $dest
-        Write-Host "+ $dest"
+        } | ConvertTo-Json | Out-File -Encoding UTF8 $out
+        Write-Host "+ $out"
     }
 }
 
