@@ -13,6 +13,7 @@
         <module>algorithm</module>
         <module>design-pattern</module>
         <module>x</module>
+        <module>chore</module>
     </modules>
 
     <properties>
