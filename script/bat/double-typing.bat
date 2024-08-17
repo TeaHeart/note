@@ -12,6 +12,7 @@ if "!opt!" == "" (
     echo 添加小鹤双拼
     set "opt=0x0"
     reg add "HKEY_CURRENT_USER\SOFTWARE\Microsoft\InputMethod\Settings\CHS" /V "UserDefinedDoublePinyinScheme0" /T REG_SZ /F /D "小鹤双拼*2*^*iuvdjhcwfg^xmlnpbksqszxkrltvyovt" > nul
+    reg add "HKEY_CURRENT_USER\SOFTWARE\Microsoft\InputMethod\Settings\CHS" /V "DoublePinyinScheme" /T REG_DWORD /F /D "0x0a" > nul
 )
 
 call :set-typing "!opt!"
