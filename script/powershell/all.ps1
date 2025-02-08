@@ -152,3 +152,17 @@ function VisualStudioInstallAll {
         --all `
         --lang en-US zh-CN <# 语言包 #>
 }
+
+function HashCheck {
+    param (
+        [ValidateNotNullOrEmpty()] [string] $hash = ".\*.md5",
+        [ValidateNotNullOrEmpty()] [string] $algorithm = "MD5",
+        [ValidateNotNullOrEmpty()] [int]$cpus = ((Get-WmiObject win32_processor).NumberOfLogicalProcessors)
+    )
+
+    Get-Content "$hash" | ForEach-Object -Parallel {
+        $line = $_.Split(" *")
+        $hash = (Get-FileHash -Algorithm $using:algorithm $line[1]).Hash
+        Write-Host "$($line[1]) $($line[0]) $($hash -ieq $line[0] ? '==' : '!=') $($hash)"
+    } -ThrottleLimit $cpus
+}
