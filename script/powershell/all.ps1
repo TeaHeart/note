@@ -1,56 +1,30 @@
 function Base {
-    set-executionpolicy remotesigned
-    powercfg -duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61
+    set-executionpolicy remotesigned # 允许脚本
+    powercfg -duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61 # 电源计划 卓越性能
 }
 
-function CopyItem {
+function Fast-Copy {
     param (
-        [Parameter(Mandatory)] [ValidateNotNullOrEmpty()] [string] $base,
-        [ValidateNotNullOrEmpty()] [string] $dest = ".\output\",
-        [Parameter(ValueFromPipeline)] [ValidateNotNullOrEmpty()] [System.IO.FileSystemInfo[]] $files = (Get-ChildItem -Recurse $base),
-        [ValidateNotNullOrEmpty()] [string] $replace = $null,
-        [ValidateNotNullOrEmpty()] [switch] $quiet = $false
+        [Parameter(Mandatory)] [ValidateNotNullOrEmpty()] [string] $src,
+        [Parameter(Mandatory)] [ValidateNotNullOrEmpty()] [string] $dest,
+        [ValidateNotNullOrEmpty()] [string] $base = (Get-Location),
+        [ValidateNotNullOrEmpty()] [int] $cpus = (Get-WmiObject win32_processor).NumberOfLogicalProcessors / 2
     )
-    mkdir -ErrorAction SilentlyContinue $dest | Out-Null
-    $base = Join-Path $base "\" | Resolve-Path
-    $dest = Join-Path $dest "\" | Resolve-Path
-    for ($i = 0; $i -lt $files.Length; $i++) {
-        $sf = $files[$i].FullName
-        $df = $sf.Substring($base.Length)
-        if (![string]::IsNullOrEmpty($replace)) {
-            $df = $df.Replace("\", $replace)
-        }
-        $df = Join-Path $dest $df
-        Copy-Item "$sf" "$df"
-        if (!$quiet) {
-            Write-Host "$i/$($files.Length) + $df"
-        }
+    $src = Resolve-Path $src
+    $dest = Resolve-Path $dest
+    $base = Resolve-Path $base
+    if (Test-Path -PathType Leaf $src) {
+        throw "请输入文件夹"
     }
+    Get-ChildItem -Recurse $src | ForEach-Object -Parallel {
+        $df = Join-Path $using:dest $_.FullName.Substring($using:base.Length)
+        Write-Host -NoNewline $_" => "
+        Copy-Item $_ $df
+        Write-Host $df
+    } -ThrottleLimit $cpus
 }
 
-function RemoveItem {
-    param (
-        [Parameter(Mandatory)] [ValidateNotNullOrEmpty()] [string] $base,
-        [ValidateNotNullOrEmpty()] [string] $dest = $base,
-        [Parameter(ValueFromPipeline)] [ValidateNotNullOrEmpty()] [System.IO.FileSystemInfo[]] $files = (Get-ChildItem -Recurse $base),
-        [ValidateNotNullOrEmpty()] [switch] $quiet = $false
-    )
-    $base = Join-Path $base "\" | Resolve-Path
-    $dest = Join-Path $dest "\" | Resolve-Path
-    $files = $files | Sort-Object -Descending { $_.FullName.Length }
-    for ($i = 0; $i -lt $files.Length; $i++) {
-        $sf = $files[$i].FullName
-        $df = Join-Path $dest $sf.Substring($base.Length)
-        Remove-Item "$df"
-        if (!$quiet) {
-            Write-Host "$i/$($files.Length) - $df"
-        }
-    }
-    if ($base -eq $dest) {
-        Remove-Item "$base"
-    }
-}
-
+# TODO 重构
 function eBookConvert {
     param (
         [Parameter(Mandatory)] [ValidateNotNullOrEmpty()] [string] $base,
@@ -102,6 +76,7 @@ function eBookConvert {
     Remove-Job -State Completed
 }
 
+# TODO 重构 拆分
 function HashCompare {
     param (
         [Parameter(Mandatory)] [ValidateNotNullOrEmpty()] [string] $dir,
@@ -146,23 +121,21 @@ function HashCompare {
     }
 }
 
-function VisualStudioInstallAll {
+function VisualStudio-Download-All {
     .\vs_Enterprise.exe `
         --layout .\vs_Enterprise\ <# 路径 #> `
-        --all `
+        --all <# 全部负载 #>`
         --lang en-US zh-CN <# 语言包 #>
 }
 
-function HashCheck {
+function MD5-Checker {
     param (
-        [ValidateNotNullOrEmpty()] [string] $hash = ".\*.md5",
-        [ValidateNotNullOrEmpty()] [string] $algorithm = "MD5",
-        [ValidateNotNullOrEmpty()] [int]$cpus = ((Get-WmiObject win32_processor).NumberOfLogicalProcessors)
+        [ValidateNotNullOrEmpty()] [string] $MD5File = ".\*.md5",
+        [ValidateNotNullOrEmpty()] [int] $cpus = (Get-WmiObject win32_processor).NumberOfLogicalProcessors / 2
     )
-
-    Get-Content "$hash" | ForEach-Object -Parallel {
-        $line = $_.Split(" *")
-        $hash = (Get-FileHash -Algorithm $using:algorithm $line[1]).Hash
-        Write-Host "$($line[1]) $($line[0]) $($hash -ieq $line[0] ? '==' : '!=') $($hash)"
+    Get-Content $MD5File | ForEach-Object -Parallel {
+        $line = $_.Split(" *") # 格式: `MD5 *FILE`
+        $hash = (Get-FileHash -Algorithm MD5 $line[1]).Hash
+        Write-Host $line[1] $line[0] ($line[0] -ieq $hash ? "==" : "!=") $hash
     } -ThrottleLimit $cpus
 }
