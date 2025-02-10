@@ -29,7 +29,7 @@ function Fast-Copy {
 function Hash-Helper {
     param (
         [Parameter(Mandatory)] [ValidateNotNullOrEmpty()] [string] $src,
-        [ValidateNotNullOrEmpty()] [string] $algorithm = "length",
+        [ValidateSet('SHA1', 'SHA256', 'SHA384', 'SHA512', 'MD5', 'LENGTH')] [string] $algorithm = "LENGTH",
         [string] $hashFile = "",
         [ValidateNotNullOrEmpty()] [int] $cpus = (Get-WmiObject win32_processor).NumberOfLogicalProcessors / 2,
         [ValidateNotNullOrEmpty()] [switch] $quiet = $false
@@ -46,7 +46,7 @@ function Hash-Helper {
             # 格式: `HASH *FILENAME`
             $info = $_.Split(" *")
             $srcPath = Join-Path $using:src $info[1]
-            $hash = "length" -ieq $using:algorithm ? (Get-ChildItem $srcPath).Length : (Get-FileHash -Algorithm $using:algorithm $srcPath).Hash
+            $hash = "LENGTH" -ieq $using:algorithm ? (Get-ChildItem $srcPath).Length : (Get-FileHash -Algorithm $using:algorithm $srcPath).Hash
             if ($hash -ieq $info[0]) {
                 if (!$using:quiet) {
                     Write-Host "$hash == $($info[0]) $($info[1])"
@@ -58,7 +58,7 @@ function Hash-Helper {
     } else {
         Get-ChildItem -File -Recurse $src | ForEach-Object -Parallel {
             $destPath = $_.FullName.Substring($using:src.Length)
-            $hash = "length" -ieq $using:algorithm ? $_.Length : (Get-FileHash -Algorithm $using:algorithm $_).Hash
+            $hash = "LENGTH" -ieq $using:algorithm ? $_.Length : (Get-FileHash -Algorithm $using:algorithm $_).Hash
             $info = "$hash *$destPath"
             if (!$using:quiet) {
                 Write-Host $info
@@ -86,7 +86,7 @@ function Hash-Compare {
     param (
         [Parameter(Mandatory)] [ValidateNotNullOrEmpty()] [string] $src,
         [Parameter(Mandatory)] [ValidateNotNullOrEmpty()] [string] $dest,
-        [ValidateNotNullOrEmpty()] [string] $algorithm = "length",
+        [ValidateSet('SHA1', 'SHA256', 'SHA384', 'SHA512', 'MD5', 'LENGTH')] [string] $algorithm = "LENGTH",
         [string] $hashFile = "",
         [ValidateNotNullOrEmpty()] [int] $cpus = (Get-WmiObject win32_processor).NumberOfLogicalProcessors / 2,
         [ValidateNotNullOrEmpty()] [switch] $quiet = $false
