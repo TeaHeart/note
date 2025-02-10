@@ -7,21 +7,109 @@ function Fast-Copy {
     param (
         [Parameter(Mandatory)] [ValidateNotNullOrEmpty()] [string] $src,
         [Parameter(Mandatory)] [ValidateNotNullOrEmpty()] [string] $dest,
-        [ValidateNotNullOrEmpty()] [string] $base = (Get-Location),
-        [ValidateNotNullOrEmpty()] [int] $cpus = (Get-WmiObject win32_processor).NumberOfLogicalProcessors / 2
+        [ValidateNotNullOrEmpty()] [int] $cpus = (Get-WmiObject win32_processor).NumberOfLogicalProcessors / 2,
+        [ValidateNotNullOrEmpty()] [switch] $quiet = $false
     )
-    $src = Resolve-Path $src
-    $dest = Resolve-Path $dest
-    $base = Resolve-Path $base
+    $src = Join-Path (Resolve-Path $src) "\"
+    $dest = Join-Path (Resolve-Path $dest) "\"
+    $parent = ([System.IO.FileInfo]$src).Directory.Parent.FullName
     if (Test-Path -PathType Leaf $src) {
         throw "请输入文件夹"
     }
+    Copy-Item $src $dest
     Get-ChildItem -Recurse $src | ForEach-Object -Parallel {
-        $df = Join-Path $using:dest $_.FullName.Substring($using:base.Length)
-        Write-Host -NoNewline $_" => "
-        Copy-Item $_ $df
-        Write-Host $df
+        $destPath = Join-Path $using:dest $_.FullName.Substring($using:parent.Length)
+        Copy-Item $_ $destPath
+        if (!$using:quiet) {
+            Write-Host "$_ => $destPath"
+        }
     } -ThrottleLimit $cpus
+}
+
+function Hash-Helper {
+    param (
+        [Parameter(Mandatory)] [ValidateNotNullOrEmpty()] [string] $src,
+        [ValidateNotNullOrEmpty()] [string] $algorithm = "length",
+        [string] $hashFile = "",
+        [ValidateNotNullOrEmpty()] [int] $cpus = (Get-WmiObject win32_processor).NumberOfLogicalProcessors / 2,
+        [ValidateNotNullOrEmpty()] [switch] $quiet = $false
+    )
+    $src = Join-Path (Resolve-Path $src) "\"
+    if (Test-Path -PathType Leaf $src) {
+        throw "请输入文件夹"
+    }
+    if ([string]::IsNullOrEmpty($hashFile)) {
+        $hashFile = "$(([System.IO.FileInfo]$src).Directory.Name).$algorithm"
+    }
+    if (Test-Path -PathType Leaf $hashFile) {
+        Get-Content $hashFile | ForEach-Object -Parallel {
+            # 格式: `HASH *FILENAME`
+            $info = $_.Split(" *")
+            $srcPath = Join-Path $using:src $info[1]
+            $hash = "length" -ieq $using:algorithm ? (Get-ChildItem $srcPath).Length : (Get-FileHash -Algorithm $using:algorithm $srcPath).Hash
+            if ($hash -ieq $info[0]) {
+                if (!$using:quiet) {
+                    Write-Host "$hash == $($info[0]) $($info[1])"
+                }
+            } else {
+                throw "$hash != $($info[0]) $($info[1])"
+            }
+        } -ThrottleLimit $cpus
+    } else {
+        Get-ChildItem -File -Recurse $src | ForEach-Object -Parallel {
+            $destPath = $_.FullName.Substring($using:src.Length)
+            $hash = "length" -ieq $using:algorithm ? $_.Length : (Get-FileHash -Algorithm $using:algorithm $_).Hash
+            $info = "$hash *$destPath"
+            if (!$using:quiet) {
+                Write-Host $info
+            }
+            return $info
+        } -ThrottleLimit $cpus | Out-File $hashFile
+    }
+}
+
+function Tree-Compare {
+    param (
+        [Parameter(Mandatory)] [ValidateNotNullOrEmpty()] [string] $src,
+        [Parameter(Mandatory)] [ValidateNotNullOrEmpty()] [string] $dest
+    )
+    $srcTmp = "src.tmp"
+    $destTmp = "dest.tmp"
+    tree /F $src | Select-Object -Skip 2 | Out-File $srcTmp
+    tree /F $dest | Select-Object -Skip 2 | Out-File $destTmp
+    git diff $srcTmp $destTmp
+    Remove-Item $srcTmp
+    Remove-Item $destTmp
+}
+
+function Hash-Compare {
+    param (
+        [Parameter(Mandatory)] [ValidateNotNullOrEmpty()] [string] $src,
+        [Parameter(Mandatory)] [ValidateNotNullOrEmpty()] [string] $dest,
+        [ValidateNotNullOrEmpty()] [string] $algorithm = "length",
+        [string] $hashFile = "",
+        [ValidateNotNullOrEmpty()] [int] $cpus = (Get-WmiObject win32_processor).NumberOfLogicalProcessors / 2,
+        [ValidateNotNullOrEmpty()] [switch] $quiet = $false
+    )
+    $src = Join-Path (Resolve-Path $src) "\"
+    $dest = Join-Path (Resolve-Path $dest) "\"
+    if (Test-Path -PathType Leaf $src) {
+        throw "请输入文件夹"
+    }
+    if (Test-Path -PathType Leaf $dest) {
+        throw "请输入文件夹"
+    }
+    if ([string]::IsNullOrEmpty($hashFile)) {
+        $hashFile = "$(([System.IO.FileInfo]$src).Directory.Name).$algorithm"
+    }
+    if ($quiet) {
+        Hash-Helper $src -algorithm $algorithm -hashFile $hashFile -cpus $cpus -quiet
+        Hash-Helper $dest -algorithm $algorithm -hashFile $hashFile -cpus $cpus -quiet
+    } else {
+        Hash-Helper $src -algorithm $algorithm -hashFile $hashFile -cpus $cpus
+        Hash-Helper $dest -algorithm $algorithm -hashFile $hashFile -cpus $cpus
+    }
+    Remove-Item $hashFile
 }
 
 # TODO 重构
@@ -76,66 +164,9 @@ function eBookConvert {
     Remove-Job -State Completed
 }
 
-# TODO 重构 拆分
-function HashCompare {
-    param (
-        [Parameter(Mandatory)] [ValidateNotNullOrEmpty()] [string] $dir,
-        [ValidateNotNullOrEmpty()] [string] $algorithm = "length",
-        [ValidateNotNullOrEmpty()] [string] $out = ".\$algorithm.json",
-        [Parameter(ValueFromPipeline)] [ValidateNotNullOrEmpty()] [System.IO.FileSystemInfo[]] $files = (Get-ChildItem -File -Recurse $dir),
-        [ValidateNotNullOrEmpty()] [switch] $quiet = $false
-    )
-    $dir = Join-Path $dir "\" | Resolve-Path
-    if (Test-Path($out)) {
-        $out = $out | Resolve-Path
-        $map = @{}
-        (Get-Content $out -Encoding UTF8 | ConvertFrom-Json) | ForEach-Object { $map[$_.Path] = $_ }
-        0..($files.Length - 1) | ForEach-Object {
-            $f = $files[$_]
-            $actual = @{}
-            $actual.Path = $f.FullName.Substring("$dir".Length)
-            $actual.Length = $f.Length
-            $expected = $map[$actual.Path]
-            if (!$quiet) {
-                Write-Host "$($_)/$($files.Length) + $($actual.Path)"
-            }
-            if ($expected.Length -ne $actual.Length -or (($algorithm -ne "length") -and ($expected.Hash -ne ($actual.Hash = (Get-FileHash -Algorithm $algorithm "$($f.FullName)").Hash)))) {
-                Write-Error "$($actual.Path)`n`tExpected: $($expected.Length) $($expected.Hash)`n`tActual  : $($actual.Length) $($actual.Hash)"
-            }
-        }
-    } else {
-        0..($files.Length - 1) | ForEach-Object {
-            $f = $files[$_]
-            $info = @{}
-            $info.Path = $f.FullName.Substring("$dir".Length)
-            $info.Length = $f.Length
-            if (!$quiet) {
-                Write-Host "$($_)/$($files.Length) + $($info.Path)"
-            }
-            if ($algorithm -ne "length") {
-                $info.Hash = (Get-FileHash -Algorithm $algorithm "$($f.FullName)").Hash
-            }
-            return $info
-        } | ConvertTo-Json | Out-File -Encoding UTF8 $out
-        Write-Host "+ $out"
-    }
-}
-
 function VisualStudio-Download-All {
     .\vs_Enterprise.exe `
         --layout .\vs_Enterprise\ <# 路径 #> `
         --all <# 全部负载 #>`
         --lang en-US zh-CN <# 语言包 #>
-}
-
-function MD5-Checker {
-    param (
-        [ValidateNotNullOrEmpty()] [string] $MD5File = ".\*.md5",
-        [ValidateNotNullOrEmpty()] [int] $cpus = (Get-WmiObject win32_processor).NumberOfLogicalProcessors / 2
-    )
-    Get-Content $MD5File | ForEach-Object -Parallel {
-        $line = $_.Split(" *") # 格式: `MD5 *FILE`
-        $hash = (Get-FileHash -Algorithm MD5 $line[1]).Hash
-        Write-Host $line[1] $line[0] ($line[0] -ieq $hash ? "==" : "!=") $hash
-    } -ThrottleLimit $cpus
 }
