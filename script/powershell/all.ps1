@@ -171,12 +171,38 @@ function VisualStudio-Download-All {
         --lang en-US zh-CN <# 语言包 #>
 }
 
+function OptionView {
+    param (
+        [Parameter(Mandatory)] [ValidateNotNullOrEmpty()] [string[]] $list,
+        [ValidateNotNullOrEmpty()] [int] $min = 0,
+        [ValidateNotNullOrEmpty()] [int] $index = $min,
+        [ValidateNotNullOrEmpty()] [int] $max = $list.Length - 1
+    )
+    Clear-Host
+    [System.Nullable[System.ConsoleKeyInfo]] $key = $null
+    for ($i = 0; $i -lt $list.Length; $i++) {
+        [System.Console]::SetCursorPosition(0, $i)
+        [System.Console]::Write($i -eq $index ? "> " : "  ")
+        [System.Console]::Write($list[$i])
+    }
+    while (($key = [System.Console]::ReadKey($true)).Key -ne [System.ConsoleKey]::Enter) {
+        if ($key.Key -eq [System.ConsoleKey]::UpArrow) {
+            $index = $index -le $min ? $max : $index - 1
+        } elseif ($key.Key -eq [System.ConsoleKey]::DownArrow) {
+            $index = $index -ge $max ? $min : $index + 1
+        }
+        for ($i = 0; $i -lt $list.Length; $i++) {
+            [System.Console]::SetCursorPosition(0, $i)
+            [System.Console]::Write($i -eq $index ? "> " : "  ")
+        }
+    } 
+    Clear-Host
+    return $list[$index]
+}
+
 function Ollama-Run {
     $list = ollama list
-    $list = 0..($list.Length - 1) | ForEach-Object {
-        Write-Host "$("{0,4:D0}" -f $_) $($list[$_])"
-        return ($list[$_] -split "\s+", 2)[0]
-    }
-    [int]$i = Read-Host -Prompt "请选择 1 ~ $($list.Length - 1): "
-    ollama run $list[$i]
+    $opt = OptionView $list -min 1
+    $split = $opt -split "\s+", 2
+    ollama run $split[0]
 }
