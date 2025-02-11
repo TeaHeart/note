@@ -170,3 +170,13 @@ function VisualStudio-Download-All {
         --all <# 全部负载 #>`
         --lang en-US zh-CN <# 语言包 #>
 }
+
+function Ollama-Run {
+    $list = ollama list
+    $list = 0..($list.Length - 1) | ForEach-Object {
+        Write-Host "$("{0,4:D0}" -f $_) $($list[$_])"
+        return ($list[$_] -split "\s+", 2)[0]
+    }
+    [int]$i = Read-Host -Prompt "请选择 1 ~ $($list.Length - 1): "
+    ollama run $list[$i]
+}
