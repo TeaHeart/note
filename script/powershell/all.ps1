@@ -200,9 +200,24 @@ function OptionView {
     return $list[$index]
 }
 
-function Ollama-Run {
-    $list = ollama list
+function Ollama-CLI {
+    param (
+        [ValidateSet('show', 'run', 'stop', 'rm', 'list', 'ps')] [string] $op = "run"
+    )
+    if ($op -ieq 'ps') {
+        while($true) { 
+            Clear-Host
+            ollama ps
+            sleep 1
+        }
+        return
+    }
+    if ($op -ieq 'list') {
+        ollama list
+        return  
+    }
+    $list = $op -ieq 'stop' ? (ollama ps) : (ollama list)
     $opt = OptionView $list -min 1
     $split = $opt -split "\s+", 2
-    ollama run $split[0]
+    ollama $op $split[0]
 }
