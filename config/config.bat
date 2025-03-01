@@ -16,7 +16,7 @@ reg add "HKEY_LOCAL_MACHINE\SOFTWARE\NVIDIA Corporation\Global\NGXCore" /V "Show
 @REM doh
 netsh dns add encryption server=223.5.5.5 dohtemplate=https://dns.alidns.com/dns-query autoupgrade=yes udpfallback=no
 netsh dns add encryption server=223.6.6.6 dohtemplate=https://dns.alidns.com/dns-query autoupgrade=yes udpfallback=no
-netsh dns add encryption server=2400:3200::1 dohtertemplate=https://dns.alidns.com/dns-query autoupgrade=yes udpfallback=no
+netsh dns add encryption server=2400:3200::1 dohtemplate=https://dns.alidns.com/dns-query autoupgrade=yes udpfallback=no
 netsh dns add encryption server=2400:3200:baba::1 dohtemplate=https://dns.alidns.com/dns-query autoupgrade=yes udpfallback=no
 
 @REM 小鹤双拼
@@ -26,7 +26,6 @@ reg add "HKEY_CURRENT_USER\SOFTWARE\Microsoft\InputMethod\Settings\CHS" /V "Enab
 
 @REM 修改允许备份频率为0分钟
 reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\SystemRestore" /V "SystemRestorePointCreationFrequency" /T REG_DWORD /F /D 0
-
 
 :end-main
 timeout 4
