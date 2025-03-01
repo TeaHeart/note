@@ -1,0 +1,5 @@
+parsers: # array
+  - reg: ^.*$
+    yaml:
+      prepend-rules:
+        - DOMAIN-SUFFIX,cn.bing.com,DIRECT
