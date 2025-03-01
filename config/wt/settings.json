@@ -59,7 +59,7 @@
         [
             {
                 "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
-                "hidden": false,
+                "hidden": true,
                 "name": "Windows PowerShell"
             },
             {
@@ -74,22 +74,49 @@
                 "source": "Windows.Terminal.PowershellCore"
             },
             {
-                "commandline": "pwsh -Command \"Ollama-CLI\"",
-                "guid": "{1f9eaad8-08aa-448c-9437-0dc78e58e9cb}",
-                "hidden": false,
-                "name": "Ollama-CLI"
-            },
-            {
                 "guid": "{01fabd22-6c78-5c43-9ee0-2de2adae9caa}",
-                "hidden": false,
-                "name": "Developer Command Prompt for VS 2022 [4]",
+                "hidden": true,
+                "name": "Developer Command Prompt for VS 2022",
                 "source": "Windows.Terminal.VisualStudio"
             },
             {
                 "guid": "{78cd0489-c97d-5a25-99b6-af6298649507}",
-                "hidden": false,
-                "name": "Developer PowerShell for VS 2022 [4]",
+                "hidden": true,
+                "name": "Developer PowerShell for VS 2022",
                 "source": "Windows.Terminal.VisualStudio"
+            },
+            {
+                "guid": "{16208362-94fc-5b1f-a491-5b2624d5ab56}",
+                "hidden": true,
+                "name": "Visual Studio Debug Console",
+                "source": "VSDebugConsole"
+            },
+            {
+                "commandline": "pwsh.exe -NoExit -Command \"&{Import-Module \"\"\"C:\\Program Files\\Microsoft Visual Studio\\2022\\Enterprise\\Common7\\Tools\\Microsoft.VisualStudio.DevShell.dll\"\"\"; Enter-VsDevShell 85caca30 -SkipAutomaticLocation -DevCmdArguments \"\"\"-arch=x64 -host_arch=x64\"\"\"}\"",
+                "guid": "{fdfcab26-05bc-4005-9a12-3ee3fac7bbed}",
+                "hidden": false,
+                "icon": "ms-appx:///ProfileIcons/pwsh.png",
+                "name": "Developer PowerShell for VS 2022",
+                "startingDirectory": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Enterprise"
+            },
+            {
+                "guid": "{3d972268-d898-556b-bdc6-ce066b19b79e}",
+                "hidden": true,
+                "name": "docker-desktop-data",
+                "source": "Microsoft.WSL"
+            },
+            {
+                "guid": "{a6c57c38-02ed-5344-8c90-33f80857b0f3}",
+                "hidden": true,
+                "name": "docker-desktop",
+                "source": "Microsoft.WSL"
+            },
+            {
+                "commandline": "pwsh -Command \"Ollama-CLI\"",
+                "guid": "{1f9eaad8-08aa-448c-9437-0dc78e58e9cb}",
+                "hidden": false,
+                "icon": "D:\\Archive\\Resource\\icon\\copilot-color.ico",
+                "name": "Ollama-CLI"
             }
         ]
     },
