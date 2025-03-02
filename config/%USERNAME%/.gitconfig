@@ -1,0 +1,38 @@
+[http]
+	proxy = http://127.0.0.1:7890
+	postBuffer = 1073741824
+[https]
+	proxy = https://127.0.0.1:7890
+[user]
+	name = TeaHeart
+	email = 1069696634@qq.com
+[core]
+	autocrlf = true
+	preloadindex = true
+	ignoreStat = true
+	useBloomFilters = true
+	longpaths = true
+	logallrefupdates = false
+	fsmonitor = true
+	untrackedcache = true
+	fscache = true
+	filemode = false
+	threads = 4
+[gc]
+	auto = 1024
+[push]
+	autoSetupRemote = true
+[fetch]
+	parallel = 4
+[pack]
+	windowMemory = 4096
+	packSizeLimit = 4096
+	threads = 4
+[alias]
+    co = checkout
+    ci = commit
+    st = status
+    br = branch
+    hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
+    type = cat-file -t
+    dump = cat-file -p

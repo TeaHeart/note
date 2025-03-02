@@ -4,12 +4,6 @@ setlocal enabledelayedexpansion
 cls
 
 :main
-@REM git配置
-git config --global http.proxy http://127.0.0.1:7890
-git config --global https.proxy https://127.0.0.1:7890
-git config --global user.name TeaHeart
-git config --global user.email 1069696634@qq.com
-
 @REM dlss信息显示
 reg add "HKEY_LOCAL_MACHINE\SOFTWARE\NVIDIA Corporation\Global\NGXCore" /V "ShowDlssIndicator" /T REG_DWORD /F /D 1024
 
