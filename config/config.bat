@@ -9,6 +9,7 @@ git config --global http.proxy http://127.0.0.1:7890
 git config --global https.proxy https://127.0.0.1:7890
 git config --global user.name TeaHeart
 git config --global user.email 1069696634@qq.com
+git config --global alias.tree "log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short"
 
 @REM dlss信息显示
 reg add "HKEY_LOCAL_MACHINE\SOFTWARE\NVIDIA Corporation\Global\NGXCore" /V "ShowDlssIndicator" /T REG_DWORD /F /D 1024
