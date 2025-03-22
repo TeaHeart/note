@@ -23,7 +23,7 @@ netsh dns add encryption server=2400:3200:baba::1 dohtemplate=https://dns.alidns
 @REM 小鹤双拼
 reg add "HKEY_CURRENT_USER\SOFTWARE\Microsoft\InputMethod\Settings\CHS" /V "UserDefinedDoublePinyinScheme0" /T REG_SZ /F /D "小鹤双拼*2*^*iuvdjhcwfg^xmlnpbksqszxkrltvyovt"
 reg add "HKEY_CURRENT_USER\SOFTWARE\Microsoft\InputMethod\Settings\CHS" /V "DoublePinyinScheme" /T REG_DWORD /F /D "0x0a"
-reg add "HKEY_CURRENT_USER\SOFTWARE\Microsoft\InputMethod\Settings\CHS" /V "Enable Double Pinyin" /T REG_DWORD /F /D "0x00"
+@REM reg add "HKEY_CURRENT_USER\SOFTWARE\Microsoft\InputMethod\Settings\CHS" /V "Enable Double Pinyin" /T REG_DWORD /F /D "0x01"
 
 @REM 修改允许备份频率为0分钟
 reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\SystemRestore" /V "SystemRestorePointCreationFrequency" /T REG_DWORD /F /D 0

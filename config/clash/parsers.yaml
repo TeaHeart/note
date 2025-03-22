@@ -3,3 +3,4 @@ parsers: # array
     yaml:
       prepend-rules:
         - DOMAIN-SUFFIX,cn.bing.com,DIRECT
+        - DOMAIN-SUFFIX,microsoft.com,DIRECT
