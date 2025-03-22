@@ -28,6 +28,8 @@ reg add "HKEY_CURRENT_USER\SOFTWARE\Microsoft\InputMethod\Settings\CHS" /V "Doub
 @REM 修改允许备份频率为0分钟
 reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\SystemRestore" /V "SystemRestorePointCreationFrequency" /T REG_DWORD /F /D 0
 
+@REM 显示联想电池养护模式
+reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Lenovo\PCManager\BatteryCache" /V "IsBatteryPolymer" /T REG_DWORD /F /D 0
 :end-main
 timeout 4
 endlocal
